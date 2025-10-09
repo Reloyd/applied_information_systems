@@ -1,0 +1,25 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ post.title }}</title>
+    <link rel="stylesheet" href="{% static 'articles/style.css' %}">
+</head>
+<body class="article">
+    <div class="header">
+        <img src="https://cdn-icons-png.flaticon.com/512/3037/3037829.png" alt="Логотип">
+        <h1>{{ post.title }}</h1>
+        <p class="text-muted">Читайте свежие публикации нашего блога</p>
+    </div>
+    <div class="blog-container">
+        <div class="one-post">
+            <div class="article-info">
+                <span class="article-author">Автор: <strong>{{ post.author.username }}</strong></span>
+                <span class="article-created-date">Дата: {{ post.created_date }}</span>
+            </div>
+            <div class="article-text">{{ post.text }}</div>
+        </div>
+    </div>
+</body>
+</html>

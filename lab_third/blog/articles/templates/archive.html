@@ -15,7 +15,7 @@
     <!-- Подключаем собственные стили -->
     <link rel="stylesheet" href="{% static 'articles/style.css' %}">
 </head>
-<body>
+<body class="archive">
 
     <!-- Шапка -->
     <div class="header">
@@ -28,7 +28,9 @@
     <div class="blog-container">
         {% for post in posts %}
             <div class="one-post">
-                <h2 class="post-title">{{ post.title }}</h2>
+                <h2 class="post-title">
+                    <a href="{% url 'get_article' article_id=post.id %}">{{ post.title }}</a>
+                </h2>
                 <div class="article-info">
                     Автор: <strong>{{ post.author.username }}</strong> |
                     Дата: {{ post.created_date }}
