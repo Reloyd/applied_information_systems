@@ -9,7 +9,7 @@
 <body class="article">
     <div class="header">
         <img src="https://cdn-icons-png.flaticon.com/512/3037/3037829.png" alt="Логотип">
-        <h1>{{ post.title }}</h1>
+        <h1 class="article-title">{{ post.title }}</h1>
         <p class="text-muted">Читайте свежие публикации нашего блога</p>
     </div>
     <div class="blog-container">
@@ -19,6 +19,9 @@
                 <span class="article-created-date">Дата: {{ post.created_date }}</span>
             </div>
             <div class="article-text">{{ post.text }}</div>
+        </div>
+        <div class="back-to-archive">
+            <a href="{% url 'archive' %}" class="btn btn-secondary">← Все записи</a>
         </div>
     </div>
 </body>

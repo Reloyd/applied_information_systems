@@ -39,6 +39,10 @@ body {
     margin-bottom: 10px;
 }
 
+.post-title a {
+    text-decoration: none;;
+}
+
 .article-info {
     font-size: 0.9rem;
     color: #888;
@@ -48,4 +52,30 @@ body {
 .article-text {
     color: #333;
     line-height: 1.6;
+}
+
+.back-to-archive {
+    text-align:center; 
+    margin-top: 20px;
+}
+
+.btn-secondary {
+    color: #ffffff;
+    background-color: #007bff;
+    padding: 10px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: background 0.3s ease;
+}
+
+.back-to-archive a:hover {
+    background-color: #0066d4;
+}
+
+.article-title {
+    margin: 0px;
+}
+
+.article {
+    margin: 0px;
 }
