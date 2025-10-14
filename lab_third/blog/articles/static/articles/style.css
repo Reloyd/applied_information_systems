@@ -49,25 +49,3 @@ body {
     color: #333;
     line-height: 1.6;
 }
-
-.post-title a {
-    color: #ffffff;
-    text-decoration: none;
-    transition: color 0.2s;
-}
-.post-title a:hover {
-    color: #007bff;
-}
-
-.article-author {
-    width: 50%;
-    float: left;
-}
-.article-created-date {
-    text-align: right;
-}
-body.archive, body.article {
-    background: #1abc9c;
-    font-family: Tahoma, Arial, sans-serif;
-    color: #ffffff;
-}
