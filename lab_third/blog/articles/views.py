@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Article
 from django.http import Http404
 
@@ -11,3 +11,38 @@ def get_article(request, article_id):
         return render(request, 'article.html', {"post": post})
     except Article.DoesNotExist:
         raise Http404
+    
+def create_post(request):
+    # Проверяем, авторизован ли пользователь
+    if request.user.is_anonymous:
+        raise Http404("Вы должны быть авторизованы, чтобы создавать статьи.")
+
+    # Если пользователь отправил форму
+    if request.method == "POST":
+        form = {
+            'title': request.POST.get("title", "").strip(),
+            'text': request.POST.get("text", "").strip()
+        }
+
+        # Проверка: заполнены ли поля
+        if not form["title"] or not form["text"]:
+            form['errors'] = "Пожалуйста, заполните все поля."
+            return render(request, 'create_post.html', {'form': form})
+
+        # Проверка: уникальность названия
+        if Article.objects.filter(title=form["title"]).exists():
+            form['errors'] = "Статья с таким названием уже существует."
+            return render(request, 'create_post.html', {'form': form})
+
+        # Создаём статью
+        article = Article.objects.create(
+            title=form["title"],
+            text=form["text"],
+            author=request.user
+        )
+
+        # Перенаправляем на страницу созданной статьи
+        return redirect('get_article', article_id=article.id)
+
+    # Если метод GET — просто показать пустую форму
+    return render(request, 'create_post.html', {})

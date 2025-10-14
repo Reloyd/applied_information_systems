@@ -1,0 +1,31 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Создать статью</title>
+    <link rel="stylesheet" href="{% static 'articles/create_post.css' %}">
+</head>
+<body>
+    <div class="header">
+        <img src="https://cdn-icons-png.flaticon.com/512/3037/3037829.png" alt="Логотип">
+        <h1>Создать новую статью</h1>
+    </div>
+
+    <div class="content">
+        <form method="POST">{% csrf_token %}
+            <input type="text" name="title" placeholder="Название статьи" value="{{ form.title }}">
+            <textarea name="text" placeholder="Текст статьи">{{ form.text }}</textarea>
+            <input type="submit" value="Сохранить">
+        </form>
+
+        {% if form.errors %}
+        <p class="error">{{ form.errors }}</p>
+        {% endif %}
+
+        <div class="back-to-archive">
+            <a href="{% url 'archive' %}">← Все записи</a>
+        </div>
+    </div>
+</body>
+</html>
