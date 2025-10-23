@@ -19,6 +19,15 @@
         <img src="https://cdn-icons-png.flaticon.com/512/3037/3037829.png" alt="Логотип">
         <h1>Архив статей</h1>
         <p class="text-muted">Читайте свежие публикации блога</p>
+        <div class="user-info">
+            {% if user.is_authenticated %}
+                <span>Вы вошли как: <strong>{{ user.username }}</strong></span>
+                <a href="{% url 'logout' %}" class="btn-secondary">Выйти</a>
+            {% else %}
+                <a href="{% url 'login' %}" class="btn-secondary">Войти</a>
+                <a href="{% url 'register' %}" class="btn-secondary">Регистрация</a>
+            {% endif %}
+        </div>
     </div>
 
     <div style="text-align: center; margin-bottom: 20px;">

@@ -79,3 +79,15 @@ body {
 .article {
     margin: 0px;
 }
+
+.btn-success {
+  background-color: #007bff;  
+}
+
+.btn-success:hover {
+    background-color: #0066d4;
+}
+
+.btn-success:active {
+    background-color: #005cbd;
+}
